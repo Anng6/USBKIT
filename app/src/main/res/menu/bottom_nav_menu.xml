@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_ms"
+        android:icon="@drawable/ic_database_outline"
+        android:title="MStorage" />
+
+    <item
+        android:id="@+id/navigation_hid"
+        android:icon="@drawable/ic_keyboard_outline"
+        android:title="HID" />
+
+    <item
+        android:id="@+id/navigation_webcam"
+        android:icon="@drawable/ic_camera_outline"
+        android:title="Webcam" />
+
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/ic_cog_outline"
+        android:title="Settings" />
+
+</menu>

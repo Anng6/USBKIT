@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_marginVertical="8dp"
+    android:clickable="true"
+    android:layout_marginHorizontal="20dp"
+    app:contentPadding="8dp"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:paddingHorizontal="8dp"
+            android:paddingTop="8dp">
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:textAppearance="?attr/textAppearanceHeadlineMedium"
+                android:textColor="?android:attr/textColorSecondary"
+                android:id="@+id/lun" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="?attr/dividerHorizontal" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="8dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="?android:attr/textColorSecondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Path" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/path"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="?android:attr/textColorSecondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mode" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mode"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="?android:attr/textColorSecondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Removable" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/removable"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp" />
+            <com.google.android.material.textview.MaterialTextView
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="?android:attr/textColorSecondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nofua" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/nofua"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:text="@string/modify"
+                android:textStyle="bold"
+                android:id="@+id/modify" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:text="@string/delete"
+                android:textStyle="bold"
+                android:id="@+id/delete" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

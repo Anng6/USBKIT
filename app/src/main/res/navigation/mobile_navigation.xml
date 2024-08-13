@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_ms">
+
+    <fragment
+        android:id="@+id/navigation_ms"
+        android:name="com.anng6.usbkit.ui.fragment.MsFragment"
+        android:label="MStorage" />
+
+    <fragment
+        android:id="@+id/navigation_hid"
+        android:name="com.anng6.usbkit.ui.fragment.HidFragment"
+        android:label="HID" />
+
+    <fragment
+        android:id="@+id/navigation_webcam"
+        android:name="com.anng6.usbkit.ui.fragment.WebcamFragment"
+        android:label="Webcam" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.anng6.usbkit.ui.fragment.SettingsFragment"
+        android:label="Settings" />
+</navigation>

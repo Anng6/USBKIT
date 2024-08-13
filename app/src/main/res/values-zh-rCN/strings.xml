@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="save">保存</string>
+
+    <!-- Activity -->
+    <string name="no_root">Root服务启动失败！</string>
+    <string name="retry">重试</string>
+
+    <!-- Fragment -->
+    <string name="list_empty">¯\\_(ツ)_\/¯\n空空如也</string>
+    <string name="create_img">新建镜像</string>
+    <string name="create">创建</string>
+    <string name="sync_ms">修复配置</string>
+    <string name="add">添加</string>
+    <string name="modify">修改</string>
+    <string name="delete">删除</string>
+    <string name="delete_ms">确认删除配置 %s？\n需已删除该配置下除 lun.0 以外的所有逻辑单元！</string>
+    <string name="delete_lun">确认删除配置 %s 中的逻辑单元 %s？</string>
+
+    <!-- Xml -->
+    <string name="img_name">镜像名称</string>
+    <string name="img_size">镜像大小(MB)</string>
+    <string name="ms_name">配置名称</string>
+    <string name="ms_img_path">镜像文件/块设备路径</string>
+    <string name="ms_mount_mode">挂载模式</string>
+    <string name="ms_removable">可移除</string>
+    <string name="ms_help">帮助：\n配置名称：一般选择已有配置即可，填入不存在的配置将创建。每个配置下的逻辑单元可能存在数量限制(8或15左右，视厂商而定)，达到上限时可尝试更换配置。\nNofua：强制启用写入缓存，这可能导致数据丢失。</string>
+
+    <!-- Settings -->
+    <string name="about">关于</string>
+    <string name="about_view_source_code">
+        <![CDATA[在 %1$s 查看源码]]>
+    </string>
+    <string name="enable_udc">启用 USB 设备</string>
+    <string name="use_gadget">切换 Gadget</string>
+    <string name="enable_funs">启用功能</string>
+    <string name="usb_info">修改 USB 设备信息</string>
+    <string name="settings">设置</string>
+    <string name="settings_language">语言</string>
+    <string name="settings_group_theme">主题</string>
+    <string name="theme_color_system">系统主题色</string>
+    <string name="theme_color">主题颜色</string>
+    <string name="pure_black_dark_theme">纯黑主题</string>
+    <string name="pure_black_dark_theme_summary">当深色主题启用时使用纯黑主题</string>
+
+    <!-- Colors -->
+    <string name="color_sakura">樱花</string>
+    <string name="color_red">红色</string>
+    <string name="color_pink">粉色</string>
+    <string name="color_purple">紫色</string>
+    <string name="color_deep_purple">深紫</string>
+    <string name="color_indigo">靛青</string>
+    <string name="color_blue">蓝色</string>
+    <string name="color_light_blue">浅蓝</string>
+    <string name="color_cyan">青色</string>
+    <string name="color_teal">青绿</string>
+    <string name="color_green">绿色</string>
+    <string name="color_light_green">浅绿</string>
+    <string name="color_lime">黄绿</string>
+    <string name="color_yellow">黄色</string>
+    <string name="color_amber">琥珀</string>
+    <string name="color_orange">橙色</string>
+    <string name="color_deep_orange">深橙</string>
+    <string name="color_brown">棕色</string>
+    <string name="color_blue_grey">灰蓝</string>
+</resources>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory
+        android:key="configfs_group"
+        android:title="@string/configfs"
+        android:enabled="false">
+
+        <rikka.material.preference.MaterialSwitchPreference
+            android:icon="@drawable/ic_shield_check_outline"
+            android:key="enable_udc"
+            android:title="@string/enable_udc" />
+        <rikka.preference.SimpleMenuPreference
+            android:defaultValue="g1"
+            android:icon="@drawable/ic_source_pull"
+            android:key="use_gadget"
+            android:summary="%s"
+            android:title="@string/use_gadget" />
+        <MultiSelectListPreference
+            android:icon="@drawable/ic_hammer_wrench"
+            android:key="enable_funs"
+            android:title="@string/enable_funs" />
+        <Preference
+            android:icon="@drawable/ic_cellphone_information"
+            android:key="usb_info"
+            android:title="@string/usb_info" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_language">
+
+        <rikka.preference.SimpleMenuPreference
+            android:defaultValue="SYSTEM"
+            android:icon="@drawable/ic_language_outline"
+            android:key="language"
+            android:popupTheme="@style/language_menu_style"
+            android:summary="%s"
+            android:title="@string/settings_language" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_group_theme">
+        <rikka.material.preference.MaterialSwitchPreference
+            android:defaultValue="true"
+            android:disableDependentsState="true"
+            android:icon="@drawable/ic_palette_outline"
+            android:key="follow_system_accent"
+            android:title="@string/theme_color_system"
+            app:isPreferenceVisible="false" />
+        <rikka.preference.SimpleMenuPreference
+            android:defaultValue="MATERIAL_BLUE"
+            android:dependency="follow_system_accent"
+            android:entries="@array/color_texts"
+            android:entryValues="@array/color_values"
+            android:icon="@drawable/ic_format_color_outline"
+            android:key="theme_color"
+            android:summary="%s"
+            android:title="@string/theme_color" />
+        <rikka.preference.SimpleMenuPreference
+            android:defaultValue="MODE_NIGHT_FOLLOW_SYSTEM"
+            android:entries="@array/theme_texts"
+            android:entryValues="@array/theme_values"
+            android:icon="@drawable/ic_dark_mode_outline"
+            android:key="dark_theme"
+            android:summary="%s"
+            android:title="@string/dark_theme" />
+        <rikka.material.preference.MaterialSwitchPreference
+            android:icon="@drawable/ic_invert_colors_outline"
+            android:key="black_dark_theme"
+            android:summary="@string/pure_black_dark_theme_summary"
+            android:title="@string/pure_black_dark_theme" />
+    </PreferenceCategory>
+</PreferenceScreen>
