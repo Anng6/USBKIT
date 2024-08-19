@@ -37,6 +37,13 @@ public class AppUtil {
         }
     }
 
+    public static void writeLine(ExtendedFile file, byte[] data) {
+        try (var writer = file.newOutputStream()) {
+            writer.write(data);
+        } catch (Exception e) {
+        }
+    }
+
     public static class shellResult {
         public int code;
         public ArrayList<String> result;

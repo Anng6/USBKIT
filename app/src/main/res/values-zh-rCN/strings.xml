@@ -11,21 +11,24 @@
     <string name="list_empty">¯\\_(ツ)_\/¯\n空空如也</string>
     <string name="create_img">新建镜像</string>
     <string name="create">创建</string>
-    <string name="sync_ms">修复配置</string>
     <string name="add">添加</string>
     <string name="modify">修改</string>
     <string name="delete">删除</string>
     <string name="delete_ms">确认删除配置 %s？\n需已删除该配置下除 lun.0 以外的所有逻辑单元！</string>
+    <string name="delete_hid">确认删除配置 %s？</string>
     <string name="delete_lun">确认删除配置 %s 中的逻辑单元 %s？</string>
 
     <!-- Xml -->
+    <string name="sync_conf">修复配置</string>
     <string name="img_name">镜像名称</string>
     <string name="img_size">镜像大小(MB)</string>
-    <string name="ms_name">配置名称</string>
+    <string name="conf_name">配置名称</string>
     <string name="ms_img_path">镜像文件/块设备路径</string>
     <string name="ms_mount_mode">挂载模式</string>
+    <string name="hid_create_type">Hid 协议</string>
     <string name="ms_removable">可移除</string>
     <string name="ms_help">帮助：\n配置名称：一般选择已有配置即可，填入不存在的配置将创建。每个配置下的逻辑单元可能存在数量限制(8或15左右，视厂商而定)，达到上限时可尝试更换配置。\nNofua：强制启用写入缓存，这可能导致数据丢失。</string>
+    <string name="use">使用</string>
 
     <!-- Settings -->
     <string name="about">关于</string>

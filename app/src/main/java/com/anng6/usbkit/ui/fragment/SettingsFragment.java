@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -185,6 +186,7 @@ public class SettingsFragment extends BaseFragment implements MenuProvider {
                 var funs = gadget.getFunctions();
                 if (funs != null) {
                     Arrays.sort(funs);
+                    Log.e(App.TAG, Arrays.asList(funs).toString());
                     enable_funs.setEntries(funs);
                     enable_funs.setEntryValues(funs);
                     enable_funs.setPositiveButtonText(android.R.string.ok);

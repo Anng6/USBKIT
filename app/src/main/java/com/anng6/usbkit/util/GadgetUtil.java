@@ -56,6 +56,10 @@ public class GadgetUtil {
             return new MsGadgetUtil(this);
         }
 
+        public HidGadgetUtil getHidGadget() {
+            return new HidGadgetUtil(this);
+        }
+
         public String[] getFunctions() {
             return remoteFS.getFile(String.format("%s/functions", gadgetPath)).list();
         }

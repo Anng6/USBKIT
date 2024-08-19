@@ -1,6 +1,7 @@
 package com.anng6.usbkit.adapters;
 
 import android.app.Activity;
+import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
@@ -78,14 +79,17 @@ public class MsAdapter extends RecyclerView.Adapter<MsAdapter.ViewHolder> {
         if (holder.isEmpty) return;
         var ms = list.get(position);
         holder.lun.setText(
-                String.format("#%d %s-%s", position + 1, ms.function.substring(13), ms.lun.substring(4)));
+                String.format(
+                        "#%d %s-%s", position + 1, ms.function.substring(13), ms.lun.substring(4)));
         holder.lun.setChecked(ms.file != null);
-        holder.path.setText(ms.file != null ? ms.file : "None");
+        holder.path.setText(TextUtils.isEmpty(ms.file) ? "None" : ms.file);
         holder.mode.setText(ms.mode);
         holder.removable.setText(ms.removable ? "Yes" : "No");
         holder.nofua.setText(ms.nofua ? "Yes" : "No");
         if (callback == null) return;
-        holder.lun.setOnCheckedChangeListener((v, n) -> holder.lun.setChecked(callback.onEnabledCheck(ms, n, ms.file)));
+        var historyPath = ms.file;
+        holder.lun.setOnCheckedChangeListener(
+                (v, n) -> holder.lun.setChecked(callback.onEnabledCheck(ms, n, historyPath)));
         holder.modify.setOnClickListener((v) -> callback.onModifyClick(ms));
         holder.delete.setOnClickListener((v) -> callback.onDeleteClick(ms));
     }

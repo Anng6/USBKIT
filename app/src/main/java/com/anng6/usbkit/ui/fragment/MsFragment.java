@@ -2,7 +2,7 @@ package com.anng6.usbkit.ui.fragment;
 
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.RemoteException;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -31,10 +31,10 @@ import com.google.android.material.snackbar.Snackbar;
 import com.topjohnwu.superuser.nio.ExtendedFile;
 import com.topjohnwu.superuser.nio.FileSystemManager;
 
-import java.io.IOException;
 import rikka.recyclerview.RecyclerViewKt;
 
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.Arrays;
 
@@ -42,7 +42,7 @@ public class MsFragment extends BaseFragment implements MenuProvider {
     private FragmentMsBinding binding;
     private MsAdapter recyclerViewAdapter;
     private FileSystemManager remoteFS;
-    private GadgetUtil.Gadget gadget;
+    public GadgetUtil.Gadget gadget;
     private ExtendedFile imgDir;
 
     @Nullable
@@ -63,13 +63,14 @@ public class MsFragment extends BaseFragment implements MenuProvider {
                     @Override
                     public boolean onEnabledCheck(
                             MsGadgetUtil.MsList ms, boolean newValue, String historyPath) {
-                        if (newValue && historyPath == null) {
+                        if (newValue && TextUtils.isEmpty(historyPath)) {
                             showHint("Err: Path is empty", Snackbar.LENGTH_SHORT);
                             return false;
                         }
                         ms.setFile(newValue ? historyPath : "");
                         gadget.getMsGadget().fixConf();
                         gadget.setUDC(true);
+                        refreshSubtitle();
                         return newValue;
                     }
 
@@ -226,6 +227,18 @@ public class MsFragment extends BaseFragment implements MenuProvider {
         binding.toolbarLayout.setSubtitle(binding.toolbar.getSubtitle());
     }
 
+    public void refreshSubtitle() {
+        if (gadget == null) return;
+        var status = gadget.getMsGadget().getMsStatus(recyclerViewAdapter.list);
+        Log.e(
+                App.TAG,
+                String.format(
+                        "Gadget: %s,  Mounted: %d/%d", AppUtil.useGadget, status[0], status[1]));
+        updateSubtitle(
+                String.format(
+                        "Gadget: %s,  Mounted: %d/%d", AppUtil.useGadget, status[0], status[1]));
+    }
+
     public void refreshUI() {
         if (binding == null) return;
         binding.swipeRefreshLayout.setRefreshing(false);
@@ -237,15 +250,12 @@ public class MsFragment extends BaseFragment implements MenuProvider {
         }
         recyclerViewAdapter.list = gadget.getMsGadget().getMsList();
         binding.recyclerView.setAdapter(recyclerViewAdapter);
-        var status = gadget.getMsGadget().getMsStatus(recyclerViewAdapter.list);
-        updateSubtitle(
-                String.format(
-                        "Gadget: %s,  Mounted: %d/%d", AppUtil.useGadget, status[0], status[1]));
         imgDir =
                 remoteFS.getFile(
                         String.format(
                                 "%s/USBKIT",
                                 Environment.getExternalStorageDirectory().getAbsolutePath()));
+        refreshSubtitle();
         if (!imgDir.exists()) imgDir.mkdirs();
     }
 

@@ -12,11 +12,11 @@
     <string name="list_empty">¯\\_(ツ)_\/¯\nNothing here</string>
     <string name="create_img">New Image</string>
     <string name="create">Create</string>
-    <string name="sync_ms">Repair Configuration</string>
     <string name="add">Add</string>
     <string name="modify">Modify</string>
     <string name="delete">Delete</string>
     <string name="delete_ms">Confirm to delete configuration %s? \nAll logical units except lun.0 under this configuration must have been deleted!</string>
+    <string name="delete_hid">Confirm to delete configuration %s? </string>
     <string name="delete_lun">Confirm to delete logical unit %s in configuration %s?</string>
     <string-array
         name="mount_modes"
@@ -25,16 +25,25 @@
         <item>Read-Write</item>
         <item>CD-Rom</item>
     </string-array>
+    <string-array
+        name="hid_type"
+        translatable="false">
+        <item>Keyboard</item>
+        <item>Mouse</item>
+    </string-array>
 
     <!-- Xml -->
+    <string name="sync_conf">Repair Configuration</string>
     <string name="img_name">Image Name</string>
     <string name="img_size">Image Size(MB)</string>
-    <string name="ms_name">Configuration Name</string>
+    <string name="conf_name">Configuration Name</string>
     <string name="ms_img_path">Image File/Block Device Path</string>
     <string name="ms_mount_mode">Mount Mode</string>
+    <string name="hid_create_type">Hid Protocol</string>
     <string name="ms_removable">Removable</string>
     <string name="ms_nofua">Nofua</string>
     <string name="ms_help">Help: \nConfiguration name: Generally, you can select an existing configuration. If a non-existent configuration is filled in, it will be created. There may be a limit on the number of logical units under each configuration (about 8 or 15, depending on the manufacturer). When the limit is reached, you can try to change the configuration. \nNofua: Force write cache to be enabled, which may cause data loss.</string>
+    <string name="use">Use</string>
 
     <!-- Settings -->
     <string name="about">About</string>

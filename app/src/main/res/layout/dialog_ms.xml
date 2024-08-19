@@ -15,7 +15,7 @@
             android:id="@+id/ms_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/ms_name"
+            android:hint="@string/conf_name"
             android:enabled="false">
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
                 android:id="@+id/ms_name"
