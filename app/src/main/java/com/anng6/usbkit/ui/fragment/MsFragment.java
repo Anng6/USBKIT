@@ -2,6 +2,8 @@ package com.anng6.usbkit.ui.fragment;
 
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.RemoteException;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,6 +31,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.topjohnwu.superuser.nio.ExtendedFile;
 import com.topjohnwu.superuser.nio.FileSystemManager;
 
+import java.io.IOException;
 import rikka.recyclerview.RecyclerViewKt;
 
 import java.io.BufferedWriter;
@@ -65,6 +68,8 @@ public class MsFragment extends BaseFragment implements MenuProvider {
                             return false;
                         }
                         ms.setFile(newValue ? historyPath : "");
+                        gadget.getMsGadget().fixConf();
+                        gadget.setUDC(true);
                         return newValue;
                     }
 
@@ -101,6 +106,8 @@ public class MsFragment extends BaseFragment implements MenuProvider {
                                             ms.setRemovable(dialogBinding.removable.isChecked());
                                             ms.setNofua(dialogBinding.nofua.isChecked());
                                             ms.setFile(dialogBinding.path.getText().toString());
+                                            gadget.getMsGadget().fixConf();
+                                            gadget.setUDC(true);
                                             refreshUI();
                                         })
                                 .setNegativeButton(android.R.string.cancel, null)
@@ -213,19 +220,27 @@ public class MsFragment extends BaseFragment implements MenuProvider {
         return binding.getRoot();
     }
 
+    public void updateSubtitle(String str) {
+        if (binding == null) return;
+        binding.toolbar.setSubtitle(str);
+        binding.toolbarLayout.setSubtitle(binding.toolbar.getSubtitle());
+    }
+
     public void refreshUI() {
         if (binding == null) return;
         binding.swipeRefreshLayout.setRefreshing(false);
         remoteFS = AppUtil.remoteFS.getValue();
         gadget = GadgetUtil.getGadget(remoteFS, AppUtil.useGadget);
-        if (gadget == null) return;
+        if (gadget == null) {
+            updateSubtitle("Initialization failed");
+            return;
+        }
         recyclerViewAdapter.list = gadget.getMsGadget().getMsList();
         binding.recyclerView.setAdapter(recyclerViewAdapter);
         var status = gadget.getMsGadget().getMsStatus(recyclerViewAdapter.list);
-        binding.toolbar.setSubtitle(
+        updateSubtitle(
                 String.format(
                         "Gadget: %s,  Mounted: %d/%d", AppUtil.useGadget, status[0], status[1]));
-        binding.toolbarLayout.setSubtitle(binding.toolbar.getSubtitle());
         imgDir =
                 remoteFS.getFile(
                         String.format(
@@ -266,13 +281,19 @@ public class MsFragment extends BaseFragment implements MenuProvider {
                                                 var zero = new char[1024];
                                                 for (; process[0] < size; process[0]++)
                                                     img.write(zero);
-                                            } catch (Exception e) {
+                                            } catch (IOException e) {
+                                                Log.e(App.TAG, e.getMessage());
+                                                process[0] = -1;
                                             }
                                         });
                                 new Runnable() {
                                     @Override
                                     public void run() {
-                                        if (process[0] < size) {
+                                        if (process[0] == -1) {
+                                            showHint(
+                                                    String.format("Err: %s creation failed", name),
+                                                    Snackbar.LENGTH_SHORT);
+                                        } else if (process[0] < size) {
                                             snackbar.setText(
                                                     String.format(
                                                             "Creating %s (%d%%)",
@@ -280,7 +301,7 @@ public class MsFragment extends BaseFragment implements MenuProvider {
                                             App.getMainHandler().postDelayed(this, 200);
                                         } else {
                                             showHint(
-                                                    String.format("%s creation complete! ", name),
+                                                    String.format("%s creation complete", name),
                                                     Snackbar.LENGTH_SHORT);
                                         }
                                     }
@@ -289,8 +310,9 @@ public class MsFragment extends BaseFragment implements MenuProvider {
                     .setNegativeButton(android.R.string.cancel, null)
                     .show();
         }
-        if (itemId == R.id.sync_ms) {
+        if (gadget != null && itemId == R.id.sync_ms) {
             gadget.getMsGadget().fixConf();
+            gadget.setUDC(true);
             showHint("Repair complete", Snackbar.LENGTH_SHORT);
         }
 

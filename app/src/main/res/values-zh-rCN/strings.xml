@@ -7,6 +7,7 @@
     <string name="retry">重试</string>
 
     <!-- Fragment -->
+    <string name="select_file">选择文件</string>
     <string name="list_empty">¯\\_(ツ)_\/¯\n空空如也</string>
     <string name="create_img">新建镜像</string>
     <string name="create">创建</string>

@@ -132,6 +132,7 @@ public class GadgetUtil {
         }
 
         public void setUDC(boolean enable) {
+            if (getUDC() == enable) return;
             var controller = getController();
             if (!TextUtils.isEmpty(controller))
                 AppUtil.writeLine(

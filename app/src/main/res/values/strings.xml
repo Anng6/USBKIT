@@ -8,6 +8,7 @@
     <string name="retry">Retry</string>
 
     <!-- Fragment -->
+    <string name="select_file">Select File</string>
     <string name="list_empty">¯\\_(ツ)_\/¯\nNothing here</string>
     <string name="create_img">New Image</string>
     <string name="create">Create</string>

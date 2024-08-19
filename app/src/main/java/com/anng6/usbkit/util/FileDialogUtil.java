@@ -28,7 +28,7 @@ public class FileDialogUtil {
         binding = DialogFileBinding.inflate(LayoutInflater.from(activity));
         fileDialog =
                 new MaterialAlertDialogBuilder(activity)
-                        .setTitle("选择文件")
+                        .setTitle(R.string.select_file)
                         .setView(binding.getRoot());
     }
 
